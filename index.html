@@ -1,129 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Mandal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Mandal | Mathematician</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: Georgia, serif;
-    display: flex;
-    min-height: 100vh;
-    background-color: #121212;
-    color: #e0e0e0;
-}
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --sidebar-bg: #111827;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --card-bg: #1e293b;
+        }
 
-/* SIDEBAR */
-.sidebar {
-    width: 230px;
-    background-color: #1a1a1a;
-    padding: 50px 25px;
-    box-sizing: border-box;
-}
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
 
-.sidebar h1 {
-    font-size: 20px;
-    margin-bottom: 40px;
-    color: #ffffff;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            padding: 50px 30px;
+            box-sizing: border-box;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #334155;
+            z-index: 10;
+        }
 
-.sidebar a {
-    display: block;
-    text-decoration: none;
-    color: #bbbbbb;
-    margin-bottom: 18px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.sidebar a:hover {
-    color: #ffffff;
-}
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
 
-/* CONTENT */
-.content {
-    flex: 1;
-    padding: 60px;
-    box-sizing: border-box;
-}
+        .sidebar h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-align: center;
+        }
 
-h2 {
-    border-bottom: 1px solid #333;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-}
+        .sidebar p.title {
+            color: var(--accent);
+            font-size: 14px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
 
-section {
-    margin-bottom: 60px;
-}
+        .nav-links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-ul {
-    padding-left: 20px;
-}
+        .sidebar a {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 10px;
+        }
 
-footer {
-    margin-top: 60px;
-    font-size: 0.9rem;
-    color: #888;
-}
-</style>
+        .sidebar a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: #ffffff;
+            padding-left: 20px;
+        }
+
+        .sidebar a:hover::before {
+            width: 10px;
+        }
+
+        /* CONTENT */
+        .content {
+            margin-left: 280px; /* Offset for fixed sidebar */
+            flex: 1;
+            padding: 80px 10%;
+            box-sizing: border-box;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* CARDS FOR LISTS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        /* TAGS */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE DESIGN FOR MOBILE */
+        @media (max-width: 850px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 30px;
+                border-right: none;
+                border-bottom: 1px solid #334155;
+            }
+            .content {
+                margin-left: 0;
+                padding: 40px 5%;
+            }
+            .nav-links {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .sidebar a:hover {
+                padding-left: 10px;
+            }
+            .sidebar a:hover::before {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="sidebar">
-    <h1>Deep Mandal</h1>
-    <a href="#home">Home</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</div>
+    <div class="sidebar">
+        <img src="profile.jpg" alt="Deep Mandal" class="profile-img">
+        
+        <h1>Deep Mandal</h1>
+        <p class="title">M.Sc. Mathematics | IITGN</p>
+        
+        <div class="nav-links">
+            <a href="#home">About</a>
+            <a href="#research">Research & Interests</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
 
-<div class="content">
+    <div class="content">
 
-<section id="home">
-    <h2>Home</h2>
-    <p>
-    I am currently pursuing an MSc in Mathematics at the Indian Institute of Technology Gandhinagar.
-    My academic focus is in theoretical and foundational mathematics.
-    </p>
-</section>
+        <section id="home">
+            <h2>About Me</h2>
+            <p>
+                I am currently pursuing an M.Sc. in Mathematics at the Indian Institute of Technology Gandhinagar. 
+                My academic focus lies deeply in theoretical and foundational mathematics, exploring the intricate 
+                connections within advanced mathematical structures.
+            </p>
+        </section>
 
-<section id="education">
-    <h2>Education</h2>
-    <ul>
-        <li>MSc in Mathematics — IIT Gandhinagar (2024–Present)</li>
-        <li>BSc in Mathematics — Netaji Subhas Open University (2020–2024)</li>
-    </ul>
-</section>
+        <section id="research">
+            <h2>Research & Interests</h2>
+            <p>My core mathematical interests revolve around complex formulations and theories. I frequently utilize LaTeX for typesetting advanced mathematical formulas and proofs.</p>
+            
+            <div class="tags">
+                <span class="tag">Number Theory</span>
+                <span class="tag">Special Functions</span>
+                <span class="tag">Modular Forms</span>
+                <span class="tag">Eisenstein Series</span>
+                <span class="tag">Real & Complex Analysis</span>
+                <span class="tag">Abstract & Linear Algebra</span>
+            </div>
+        </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <ul>
-        <li>Data Analysis for Accident & Insurance using Python</li>
-        <li>SIR Model using Ordinary Differential Equations</li>
-        <li>Annual Foundation School-1 (AFS-1 2024), IIT Hyderabad</li>
-    </ul>
-</section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>M.Sc. in Mathematics</h3>
+                    <p>Indian Institute of Technology (IIT) Gandhinagar</p>
+                    <p style="color: var(--accent); margin-top: 10px; font-weight: 600;">2024 – Present</p>
+                </div>
+                <div class="card">
+                    <h3>B.Sc. in Mathematics</h3>
+                    <p>Netaji Subhas Open University</p>
+                    <p style="color: var(--accent); margin-top: 10px; font-weight: 600;">2020 – 2024</p>
+                </div>
+            </div>
+        </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>
-    24510040@iitgn.ac.in <br>
-    de.deepmanda999@gmail.com
-    </p>
-</section>
+        <section id="projects">
+            <h2>Projects & Work</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Möbius Function & Ramanujan Formulas</h3>
+                    <p>Presentation on the integral representation of a series involving the Möbius function, related to a formula by Ramanujan. (Supervised by Prof. Atul Abhay Dixit).</p>
+                </div>
+                <div class="card">
+                    <h3>Data Analysis</h3>
+                    <p>Accident & Insurance data analysis utilizing Python for statistical modeling.</p>
+                </div>
+                <div class="card">
+                    <h3>SIR Model</h3>
+                    <p>Modeling infectious diseases using Ordinary Differential Equations.</p>
+                </div>
+                <div class="card">
+                    <h3>AFS-1 2024</h3>
+                    <p>Annual Foundation School-1 participant at IIT Hyderabad.</p>
+                </div>
+            </div>
+        </section>
 
-<footer>
-© 2026 Deep Mandal
-</footer>
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card" style="display: inline-block;">
+                <p style="margin-bottom: 15px;"><strong>Institutional:</strong> <a href="mailto:24510040@iitgn.ac.in" style="color: var(--accent); text-decoration: none; transition: color 0.3s;">24510040@iitgn.ac.in</a></p>
+                <p><strong>Personal:</strong> <a href="mailto:de.deepmanda999@gmail.com" style="color: var(--accent); text-decoration: none; transition: color 0.3s;">de.deepmanda999@gmail.com</a></p>
+            </div>
+        </section>
 
-</div>
+        <footer>
+            © 2026 Deep Mandal
+        </footer>
+
+    </div>
 
 </body>
-
 </html>
 
 
