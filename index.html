@@ -3,42 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Mandal | Academic Profile</title>
+<title>Deep Mandal</title>
 
 <style>
 body {
-    font-family: Georgia, serif;
     margin: 0;
+    font-family: Georgia, serif;
+    display: flex;
+    min-height: 100vh;
     background-color: #ffffff;
     color: #222;
-    line-height: 1.6;
 }
 
-.container {
-    max-width: 850px;
-    margin: auto;
+/* LEFT SIDEBAR */
+.sidebar {
+    width: 220px;
+    background-color: #f5f5f5;
     padding: 40px 20px;
+    box-sizing: border-box;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
+.sidebar h1 {
+    font-size: 22px;
+    margin-bottom: 40px;
 }
 
-.subtitle {
-    color: #555;
-    margin-bottom: 20px;
-}
-
-nav a {
-    margin-right: 15px;
+.sidebar a {
+    display: block;
     text-decoration: none;
     color: #003366;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
-section {
-    margin-top: 50px;
+.sidebar a:hover {
+    color: #000;
+}
+
+/* MAIN CONTENT */
+.content {
+    flex: 1;
+    padding: 60px;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -46,111 +52,64 @@ h2 {
     padding-bottom: 5px;
 }
 
-ul {
-    padding-left: 20px;
+section {
+    margin-bottom: 50px;
 }
 
-.footer {
-    margin-top: 60px;
-    font-size: 0.9rem;
-    color: #777;
+ul {
+    padding-left: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Deep Mandal</h1>
-<div class="subtitle">
-MSc Mathematics (CGPA: 8.8/10)<br>
-Indian Institute of Technology Gandhinagar
+<div class="sidebar">
+    <h1>Deep Mandal</h1>
+    <a href="#home">Home</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
 </div>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#coursework">Coursework</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#interests">Research Interests</a>
-    <a href="#contact">Contact</a>
-</nav>
+<div class="content">
 
-<section id="about">
-<h2>About</h2>
-<p>
-I am currently pursuing an MSc in Mathematics at IIT Gandhinagar.
-My academic interests lie in Pure Mathematics, particularly in
-Real Analysis, Functional Analysis, Linear Algebra, and Harmonic Analysis.
-I am eager to pursue research in theoretical mathematics.
-</p>
+<section id="home">
+    <h2>Home</h2>
+    <p>
+    I am currently pursuing an MSc in Mathematics at the Indian Institute of Technology Gandhinagar.
+    My academic focus is in pure mathematics and theoretical foundations.
+    </p>
 </section>
 
 <section id="education">
-<h2>Education</h2>
-<ul>
-<li><strong>MSc Mathematics</strong>, IIT Gandhinagar (2024–Present) — CGPA: 8.8/10</li>
-<li><strong>BSc Mathematics</strong>, Netaji Subhas Open University (2020–2024) — 81.16%</li>
-<li>Higher Secondary (2019) — 90%</li>
-<li>Secondary (2017) — 93%</li>
-</ul>
-</section>
-
-<section id="coursework">
-<h2>Relevant Coursework</h2>
-<ul>
-<li>Real Analysis I & II</li>
-<li>Linear Algebra</li>
-<li>Complex Analysis</li>
-<li>Topology & Differential Topology</li>
-<li>Probability & Stochastic Processes</li>
-<li>Numerical Analysis</li>
-<li>Ordinary Differential Equations</li>
-<li>Harmonic Analysis (Special Functions, Fourier & Laplace)</li>
-</ul>
+    <h2>Education</h2>
+    <ul>
+        <li>MSc in Mathematics — Indian Institute of Technology Gandhinagar (2024–Present)</li>
+        <li>BSc in Mathematics — Netaji Subhas Open University (2020–2024)</li>
+    </ul>
 </section>
 
 <section id="projects">
-<h2>Projects & Workshops</h2>
-<ul>
-<li><strong>Data Analysis for Accident & Insurance</strong><br>
-Guide: Dr. Panchatcharam Mariappan (IIT Tirupati)</li>
-
-<li><strong>SIR Model using Ordinary Differential Equations</strong><br>
-Guide: Dr. Durga Prasad Challa (IIT Tirupati)</li>
-
-<li>Participant — Annual Foundation School 1 (AFS-1 2024), IIT Hyderabad</li>
-</ul>
-</section>
-
-<section id="skills">
-<h2>Technical Skills</h2>
-<ul>
-<li>LaTeX</li>
-<li>C++, Python, MATLAB</li>
-<li>Numerical Computation</li>
-</ul>
-</section>
-
-<section id="interests">
-<h2>Research Interests</h2>
-<ul>
-<li>Real & Functional Analysis</li>
-<li>Linear Algebra & Operator Theory</li>
-<li>Integration Theory</li>
-<li>Harmonic Analysis</li>
-</ul>
+    <h2>Projects</h2>
+    <ul>
+        <li>Data Analysis for Accident & Insurance using Python</li>
+        <li>SIR Model using Ordinary Differential Equations</li>
+        <li>Participant — Annual Foundation School 1 (AFS-1 2024), IIT Hyderabad</li>
+    </ul>
 </section>
 
 <section id="contact">
-<h2>Contact</h2>
-<p>
-Email: 24510040@iitgn.ac.in <br>
-Email (Personal): de.deepmanda999@gmail.com
-</p>
+    <h2>Contact</h2>
+    <p>
+    24510040@iitgn.ac.in <br>
+    de.deepmanda999@gmail.com
+    </p>
 </section>
 
-<div cl
+</div>
+
+</body>
+</html>
+
 
