@@ -9,42 +9,59 @@
 body {
     margin: 0;
     font-family: Georgia, serif;
-    display: flex;
-    min-height: 100vh;
     background-color: #ffffff;
     color: #222;
 }
 
-/* LEFT SIDEBAR */
-.sidebar {
-    width: 220px;
-    background-color: #f5f5f5;
+.container {
+    max-width: 900px;
+    margin: auto;
     padding: 40px 20px;
-    box-sizing: border-box;
 }
 
-.sidebar h1 {
-    font-size: 22px;
+/* NAVIGATION */
+nav {
+    text-align: center;
     margin-bottom: 40px;
 }
 
-.sidebar a {
-    display: block;
+nav a {
+    margin: 0 15px;
     text-decoration: none;
     color: #003366;
-    margin-bottom: 15px;
     font-weight: bold;
 }
 
-.sidebar a:hover {
-    color: #000;
+nav a:hover {
+    color: black;
 }
 
-/* MAIN CONTENT */
-.content {
-    flex: 1;
-    padding: 60px;
-    box-sizing: border-box;
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin: 10px 0 5px 0;
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    color: #555;
+}
+
+/* SECTIONS */
+section {
+    margin-bottom: 50px;
 }
 
 h2 {
@@ -52,64 +69,78 @@ h2 {
     padding-bottom: 5px;
 }
 
-section {
-    margin-bottom: 50px;
-}
-
 ul {
     padding-left: 20px;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 60px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sidebar">
-    <h1>Deep Mandal</h1>
-    <a href="#home">Home</a>
+<div class="container">
+
+<nav>
+    <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+</nav>
+
+<div class="header">
+    <!-- Replace profile.jpg with your own photo file -->
+    <img src="profile.jpg" alt="Deep Mandal">
+    <h1>Deep Mandal</h1>
+    <div class="subtitle">MSc Student in Mathematics</div>
 </div>
 
-<div class="content">
-
-<section id="home">
-    <h2>Home</h2>
-    <p>
-    I am currently pursuing an MSc in Mathematics at the Indian Institute of Technology Gandhinagar.
-    My academic focus is in pure mathematics and theoretical foundations.
-    </p>
+<section id="about">
+<h2>About</h2>
+<p>
+I am currently pursuing an MSc in Mathematics at the Indian Institute of Technology Gandhinagar.
+My academic training focuses on theoretical mathematics and analytical foundations.
+</p>
 </section>
 
 <section id="education">
-    <h2>Education</h2>
-    <ul>
-        <li>MSc in Mathematics — Indian Institute of Technology Gandhinagar (2024–Present)</li>
-        <li>BSc in Mathematics — Netaji Subhas Open University (2020–2024)</li>
-    </ul>
+<h2>Education</h2>
+<ul>
+<li>MSc in Mathematics — IIT Gandhinagar (2024–Present)</li>
+<li>BSc in Mathematics — Netaji Subhas Open University (2020–2024)</li>
+</ul>
 </section>
 
 <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-        <li>Data Analysis for Accident & Insurance using Python</li>
-        <li>SIR Model using Ordinary Differential Equations</li>
-        <li>Participant — Annual Foundation School 1 (AFS-1 2024), IIT Hyderabad</li>
-    </ul>
+<h2>Projects</h2>
+<ul>
+<li>Data Analysis for Accident & Insurance using Python</li>
+<li>SIR Model using Ordinary Differential Equations</li>
+<li>Annual Foundation School-1 (AFS-1 2024), IIT Hyderabad</li>
+</ul>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p>
-    24510040@iitgn.ac.in <br>
-    de.deepmanda999@gmail.com
-    </p>
+<h2>Contact</h2>
+<p>
+24510040@iitgn.ac.in <br>
+de.deepmanda999@gmail.com
+</p>
 </section>
+
+<footer>
+© 2026 Deep Mandal
+</footer>
 
 </div>
 
 </body>
 </html>
+
 
 
