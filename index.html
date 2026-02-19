@@ -8,12 +8,12 @@
 
     <style>
         :root {
-            --bg-color: #0b1120;
+            --bg-color: #ffffff;
             --sidebar-bg: #111827;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --card-bg: #1e293b;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --accent: #2563eb; /* A more academic, deeper blue */
+            --border-color: #e2e8f0;
         }
 
         body {
@@ -24,6 +24,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         /* SIDEBAR */
@@ -37,7 +38,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-right: 1px solid #334155;
             z-index: 10;
         }
 
@@ -46,15 +46,14 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent);
+            border: 3px solid #334155;
             margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
         .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            transform: scale(1.03);
         }
 
         .sidebar h1 {
@@ -66,10 +65,11 @@
         }
 
         .sidebar p.title {
-            color: var(--accent);
+            color: #94a3b8;
             font-size: 14px;
             margin-bottom: 40px;
-            font-weight: 600;
+            font-weight: 400;
+            text-align: center;
         }
 
         .nav-links {
@@ -82,7 +82,7 @@
         .sidebar a {
             display: inline-block;
             text-decoration: none;
-            color: var(--text-muted);
+            color: #cbd5e1;
             font-size: 16px;
             font-weight: 400;
             transition: all 0.3s ease;
@@ -104,11 +104,11 @@
 
         .sidebar a:hover {
             color: #ffffff;
-            padding-left: 20px;
+            padding-left: 15px;
         }
 
         .sidebar a:hover::before {
-            width: 10px;
+            width: 8px;
         }
 
         /* CONTENT */
@@ -117,60 +117,26 @@
             flex: 1;
             padding: 80px 10%;
             box-sizing: border-box;
-            animation: fadeIn 1.2s ease-out;
+            animation: fadeIn 1s ease-out;
         }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: #ffffff;
+            font-size: 28px;
+            color: #0f172a;
             border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
             display: inline-block;
         }
 
         section {
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         p {
-            line-height: 1.8;
             font-size: 16px;
-            color: var(--text-muted);
-        }
-
-        /* CARDS FOR LISTS */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            border-color: var(--accent);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #ffffff;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            margin-bottom: 0;
-            font-size: 14px;
+            color: var(--text-main);
         }
 
         /* TAGS */
@@ -178,30 +144,120 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .tag {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 8px 15px;
-            border-radius: 20px;
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 4px;
             font-size: 14px;
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
             cursor: default;
+            transition: background-color 0.2s ease;
         }
 
         .tag:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* EDUCATION TIMELINE */
+        .timeline {
+            border-left: 3px solid var(--border-color);
+            padding-left: 25px;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideUpFade 0.6s ease-out forwards;
+        }
+
+        /* Animation Delays for Timeline Cascade Effect */
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px; /* Centers the dot on the border */
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
             background-color: var(--accent);
-            color: #000;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+
+        .timeline-inst {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* PROJECTS LIST */
+        .project-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-list li {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .project-list li::before {
+            content: '▹'; /* Academic bullet point */
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #0f172a;
+            display: inline;
+        }
+
+        .project-desc {
+            display: inline;
+            color: var(--text-main);
         }
 
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding-top: 20px;
-            border-top: 1px solid #334155;
+            border-top: 1px solid var(--border-color);
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -209,22 +265,23 @@
 
         /* ANIMATIONS */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* RESPONSIVE DESIGN FOR MOBILE */
         @media (max-width: 850px) {
-            body {
-                flex-direction: column;
-            }
+            body { flex-direction: column; }
             .sidebar {
                 width: 100%;
                 height: auto;
                 position: relative;
                 padding: 30px;
-                border-right: none;
-                border-bottom: 1px solid #334155;
             }
             .content {
                 margin-left: 0;
@@ -235,12 +292,8 @@
                 justify-content: center;
                 flex-wrap: wrap;
             }
-            .sidebar a:hover {
-                padding-left: 10px;
-            }
-            .sidebar a:hover::before {
-                display: none;
-            }
+            .sidebar a:hover { padding-left: 10px; }
+            .sidebar a:hover::before { display: none; }
         }
     </style>
 </head>
@@ -249,13 +302,12 @@
 
     <div class="sidebar">
         <img src="profile.jpg" alt="Deep Mandal" class="profile-img">
-        
         <h1>Deep Mandal</h1>
-        <p class="title">M.Sc. Mathematics | IITGN</p>
+        <p class="title">M.Sc. Student in Mathematics<br>IIT Gandhinagar</p>
         
         <div class="nav-links">
-            <a href="#home">About</a>
-            <a href="#research">Research & Interests</a>
+            <a href="#about">About</a>
+            <a href="#research">Interests</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
@@ -264,7 +316,7 @@
 
     <div class="content">
 
-        <section id="home">
+        <section id="about">
             <h2>About Me</h2>
             <p>
                 I am currently pursuing an M.Sc. in Mathematics at the Indian Institute of Technology Gandhinagar. 
@@ -274,7 +326,7 @@
         </section>
 
         <section id="research">
-            <h2>Research & Interests</h2>
+            <h2>Research Interests</h2>
             <p>My core mathematical interests revolve around complex formulations and theories. I frequently utilize LaTeX for typesetting advanced mathematical formulas and proofs.</p>
             
             <div class="tags">
@@ -289,48 +341,59 @@
 
         <section id="education">
             <h2>Education</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>M.Sc. in Mathematics</h3>
-                    <p>Indian Institute of Technology (IIT) Gandhinagar</p>
-                    <p style="color: var(--accent); margin-top: 10px; font-weight: 600;">2024 – Present</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2024 – Present</span>
+                    <h3 class="timeline-title">M.Sc. in Mathematics</h3>
+                    <p class="timeline-inst">Indian Institute of Technology (IIT) Gandhinagar</p>
                 </div>
-                <div class="card">
-                    <h3>B.Sc. in Mathematics</h3>
-                    <p>Netaji Subhas Open University</p>
-                    <p style="color: var(--accent); margin-top: 10px; font-weight: 600;">2020 – 2024</p>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2020 – 2024</span>
+                    <h3 class="timeline-title">B.Sc. in Mathematics</h3>
+                    <p class="timeline-inst">Netaji Subhas Open University</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2019</span>
+                    <h3 class="timeline-title">12th Standard (Higher Secondary)</h3>
+                    <p class="timeline-inst">Simlapal Madan Mohan High School, West Bengal</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2017</span>
+                    <h3 class="timeline-title">10th Standard (Secondary)</h3>
+                    <p class="timeline-inst">Simlapal Madan Mohan High School, West Bengal</p>
                 </div>
             </div>
         </section>
 
         <section id="projects">
             <h2>Projects & Work</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Möbius Function & Ramanujan Formulas</h3>
-                    <p>Presentation on the integral representation of a series involving the Möbius function, related to a formula by Ramanujan. (Supervised by Prof. Atul Abhay Dixit).</p>
-                </div>
-                <div class="card">
-                    <h3>Data Analysis</h3>
-                    <p>Accident & Insurance data analysis utilizing Python for statistical modeling.</p>
-                </div>
-                <div class="card">
-                    <h3>SIR Model</h3>
-                    <p>Modeling infectious diseases using Ordinary Differential Equations.</p>
-                </div>
-                <div class="card">
-                    <h3>AFS-1 2024</h3>
-                    <p>Annual Foundation School-1 participant at IIT Hyderabad.</p>
-                </div>
-            </div>
+            <ul class="project-list">
+                <li>
+                    <div class="project-title">Möbius Function & Ramanujan Formulas — </div>
+                    <div class="project-desc">Two-semester M.Sc. project under the supervision of Prof. Atul Abhay Dixit. Focusing on the integral representation of a series involving the Möbius function, related to a formula by Ramanujan.</div>
+                </li>
+                <li>
+                    <div class="project-title">Annual Foundation School-1 (AFS-1 2024) — </div>
+                    <div class="project-desc">Participant at IIT Hyderabad, engaging with foundational mathematics topics.</div>
+                </li>
+                <li>
+                    <div class="project-title">SIR Model — </div>
+                    <div class="project-desc">Modeled infectious diseases using Ordinary Differential Equations to analyze epidemic spread.</div>
+                </li>
+                <li>
+                    <div class="project-title">Data Analysis — </div>
+                    <div class="project-desc">Conducted accident and insurance data analysis utilizing Python for statistical modeling.</div>
+                </li>
+            </ul>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <div class="card" style="display: inline-block;">
-                <p style="margin-bottom: 15px;"><strong>Institutional:</strong> <a href="mailto:24510040@iitgn.ac.in" style="color: var(--accent); text-decoration: none; transition: color 0.3s;">24510040@iitgn.ac.in</a></p>
-                <p><strong>Personal:</strong> <a href="mailto:de.deepmanda999@gmail.com" style="color: var(--accent); text-decoration: none; transition: color 0.3s;">de.deepmanda999@gmail.com</a></p>
-            </div>
+            <p><strong>Institutional:</strong> <a href="mailto:24510040@iitgn.ac.in" style="color: var(--accent); text-decoration: none;">24510040@iitgn.ac.in</a></p>
+            <p><strong>Personal:</strong> <a href="mailto:de.deepmanda999@gmail.com" style="color: var(--accent); text-decoration: none;">de.deepmanda999@gmail.com</a></p>
         </section>
 
         <footer>
