@@ -3,72 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Mandal | Portfolio</title>
+    <title>Deep Mandal | Academic Webpage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Reset and Base Styles */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { display: flex; min-height: 100vh; background-color: #f4f4f4; color: #333; }
-        
-        /* Sidebar Styling */
-        .sidebar { width: 300px; background-color: #111; color: #fff; padding: 2rem; position: fixed; height: 100vh; overflow-y: auto; text-align: center; display: flex; flex-direction: column; align-items: center;}
-        .sidebar img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
-        .sidebar h1 { font-size: 1.8rem; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .sidebar h2 { font-size: 1.1rem; color: #aaa; margin-bottom: 2rem; border-bottom: none; padding-bottom: 0; }
-        
-        .contact-info { width: 100%; text-align: left; }
-        .contact-info a, .contact-info p { color: #ddd; text-decoration: none; display: flex; align-items: center; margin-bottom: 1rem; font-size: 0.95rem; transition: color 0.3s; }
-        .contact-info a:hover { color: #4da6ff; }
-        .contact-info i { margin-right: 15px; font-size: 1.2rem; width: 20px; text-align: center; color: #4da6ff; }
-        .contact-info .fa-youtube { color: #ff0000; }
-        .contact-info .fa-linkedin { color: #0077b5; }
+        /* Minimalist Academic Theme */
+        :root {
+            --bg-color: #ffffff;
+            --sidebar-bg: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --link-color: #0056b3;
+            --border-color: #e5e5e5;
+        }
 
-        /* Main Content Area */
-        .main-content { margin-left: 300px; padding: 4rem; width: calc(100% - 300px); background-color: #fff; animation: fadeIn 1.2s ease-in-out; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* Animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        body { 
+            display: flex; 
+            min-height: 100vh; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            line-height: 1.6;
+        }
         
-        section { margin-bottom: 4rem; }
-        .section-title { font-size: 2.2rem; border-bottom: 3px solid #111; padding-bottom: 0.5rem; margin-bottom: 2rem; color: #111; text-transform: uppercase; letter-spacing: 1px; }
+        /* Subtle Sidebar */
+        .sidebar { 
+            width: 320px; 
+            background-color: var(--sidebar-bg); 
+            border-right: 1px solid var(--border-color);
+            padding: 3rem 2rem; 
+            position: fixed; 
+            height: 100vh; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+        }
         
-        /* Research Interests Tags */
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #e6f2ff; color: #0059b3; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; font-size: 0.95rem; border: 1px solid #b3d9ff; transition: background 0.3s;}
-        .tag:hover { background: #cce6ff; cursor: default; }
+        .sidebar img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 4px; /* Square with rounded corners looks more formal */
+            object-fit: cover; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid var(--border-color);
+        }
+        
+        .sidebar h1 { 
+            font-size: 1.5rem; 
+            font-weight: 600;
+            margin-bottom: 0.2rem; 
+            color: #000;
+        }
+        
+        .sidebar h2 { 
+            font-size: 1rem; 
+            font-weight: 400;
+            color: var(--text-muted); 
+            margin-bottom: 2rem; 
+        }
+        
+        .contact-info { width: 100%; font-size: 0.9rem; }
+        .contact-info p { margin-bottom: 0.5rem; display: flex; align-items: center; }
+        .contact-info a { color: var(--link-color); text-decoration: none; margin-bottom: 0.5rem; display: flex; align-items: center; }
+        .contact-info a:hover { text-decoration: underline; }
+        .contact-info i { width: 25px; color: var(--text-muted); }
 
-        /* Vertical Timeline for Education */
-        .timeline { position: relative; border-left: 4px solid #111; margin-left: 1rem; padding-left: 2rem; }
-        .timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -2.6rem; top: 0; width: 20px; height: 20px; background-color: #fff; border: 4px solid #111; border-radius: 50%; }
-        .timeline-content { background: #fdfdfd; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-        .timeline-date { display: inline-block; background: #111; color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: bold; margin-bottom: 1rem; }
-        .timeline-content h3 { font-size: 1.3rem; color: #111; margin-bottom: 0.5rem; }
-        .timeline-content p { color: #555; line-height: 1.6; }
-        .highlight { font-weight: bold; color: #000; }
+        /* Clean Main Content */
+        .main-content { 
+            margin-left: 320px; 
+            padding: 4rem 5rem; 
+            width: calc(100% - 320px); 
+            max-width: 1000px;
+        }
+        
+        section { margin-bottom: 3.5rem; }
+        
+        .section-title { 
+            font-size: 1.4rem; 
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color); 
+            padding-bottom: 0.4rem; 
+            margin-bottom: 1.5rem; 
+            color: #000; 
+        }
 
-        /* List Format for Projects & Achievements */
-        .project-list { list-style: none; }
-        .project-list li { background: #fdfdfd; margin-bottom: 1.5rem; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #111; transition: transform 0.3s ease; }
-        .project-list li:hover { transform: translateX(8px); }
-        .project-list h3 { font-size: 1.2rem; color: #111; margin-bottom: 0.5rem; }
-        .project-list p { color: #555; line-height: 1.5; margin-bottom: 0.5rem; }
+        /* Bulleted Lists for Interests & Skills */
+        .bullet-list {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            color: var(--text-main);
+        }
+        .bullet-list li {
+            margin-bottom: 0.4rem;
+        }
 
-        /* Grids for Coursework & Skills */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-        .grid-item { background: #f0f0f0; color: #333; padding: 1rem; text-align: center; border-radius: 6px; font-weight: 500; transition: background 0.3s, color 0.3s; border: 1px solid #ddd; }
-        .grid-item:hover { background: #111; color: #fff; cursor: default; }
-        .skill-item { background: #111; color: #fff; font-weight: bold; border: none; }
-        .skill-item:hover { background: #4da6ff; }
+        /* Academic Item Layout (Education, Projects) */
+        .academic-item {
+            margin-bottom: 1.8rem;
+        }
+        .academic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.2rem;
+        }
+        .academic-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #000;
+        }
+        .academic-date {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .academic-subtitle {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+        .academic-details {
+            margin-top: 0.3rem;
+        }
 
         /* Responsive Design */
         @media (max-width: 900px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem 1rem; }
-            .main-content { margin-left: 0; width: 100%; padding: 2rem 1rem; }
-            .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; text-align: center; }
-            .contact-info p, .contact-info a { margin-bottom: 0; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border-color); }
+            .main-content { margin-left: 0; width: 100%; padding: 2rem; }
+            .academic-header { flex-direction: column; }
         }
     </style>
 </head>
@@ -77,14 +140,14 @@
     <aside class="sidebar">
         <img src="profile.jpg" alt="Deep Mandal">
         <h1>Deep Mandal</h1>
-        <h2>MSc Student @ IIT Gandhinagar</h2>
+        <h2>MSc Student in Mathematics<br>IIT Gandhinagar</h2>
         
         <div class="contact-info">
             <p><i class="fa-solid fa-envelope"></i> 24510040@iitgn.ac.in</p>
             <p><i class="fa-solid fa-envelope"></i> de.deepmanda999@gmail.com</p>
             <p><i class="fa-solid fa-phone"></i> +91 9749164294</p>
-            <a href="https://www.linkedin.com/in/deep-mandal-3398a6271/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
-            <a href="https://www.youtube.com/channel/UC2SxJnPvn6-dr-KV9pos0zg" target="_blank"><i class="fa-brands fa-youtube"></i> Mathematical Deep Thoughts</a>
+            <a href="https://www.linkedin.com/in/deep-mandal-3398a6271/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/channel/UC2SxJnPvn6-dr-KV9pos0zg" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube Channel</a>
         </div>
     </aside>
 
@@ -92,125 +155,103 @@
         
         <section id="research">
             <h2 class="section-title">Research Interests</h2>
-            <div class="tags">
-                <span class="tag">Analytic Number Theory</span>
-                <span class="tag">Special Functions</span>
-                <span class="tag">Modular Forms</span>
-                <span class="tag">Functional Analysis</span>
-                <span class="tag">Harmonic Analysis</span>
-                <span class="tag">Matrix Analysis</span>
-                <span class="tag">Mathematics of Srinivasa Ramanujan</span>
-            </div>
-        </section>
-
-        <section id="achievements">
-            <h2 class="section-title">Latest Achievements</h2>
-            <ul class="project-list">
-                <li>
-                    <h3>GATE Mathematics (2026)</h3>
-                    <p>Successfully qualified with a score of <span class="highlight">37.03</span>.</p>
-                </li>
+            <ul class="bullet-list">
+                <li>Analytic Number Theory</li>
+                <li>Special Functions</li>
+                <li>Modular Forms</li>
+                <li>Matrix Analysis</li>
             </ul>
         </section>
 
         <section id="education">
             <h2 class="section-title">Education</h2>
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024 - Present</span>
-                        <h3>Indian Institute of Technology Gandhinagar</h3>
-                        <p>MSc in Mathematics</p>
-                        <p>Current CPI: <span class="highlight">8.64/10</span></p>
-                    </div>
+            
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Indian Institute of Technology Gandhinagar</span>
+                    <span class="academic-date">2024 &ndash; Present</span>
                 </div>
+                <div class="academic-subtitle">Master of Science in Mathematics</div>
+                <div class="academic-details">Current CPI: 8.64/10</div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2020 - 2024</span>
-                        <h3>Netaji Subhas Open University</h3>
-                        <p>BSc in Mathematics</p>
-                        <p>Marks: <span class="highlight">81.16%</span></p>
-                    </div>
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Netaji Subhas Open University</span>
+                    <span class="academic-date">2020 &ndash; 2024</span>
                 </div>
+                <div class="academic-subtitle">Bachelor of Science in Mathematics</div>
+                <div class="academic-details">Marks: 81.16%</div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2019</span>
-                        <h3>Simlapal Madan Mohan High School</h3>
-                        <p>West Bengal Council of Higher Secondary Education (Class 12th)</p>
-                        <p>Marks: <span class="highlight">90%</span></p>
-                    </div>
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Simlapal Madan Mohan High School</span>
+                    <span class="academic-date">2019</span>
                 </div>
+                <div class="academic-subtitle">Higher Secondary Education (Class 12th)</div>
+                <div class="academic-details">Marks: 90%</div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">2017</span>
-                        <h3>Simlapal Madan Mohan High School</h3>
-                        <p>West Bengal Board of Secondary Education (Class 10th)</p>
-                        <p>Marks: <span class="highlight">93%</span></p>
-                    </div>
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Simlapal Madan Mohan High School</span>
+                    <span class="academic-date">2017</span>
                 </div>
-
+                <div class="academic-subtitle">Secondary Education (Class 10th)</div>
+                <div class="academic-details">Marks: 93%</div>
             </div>
         </section>
 
         <section id="projects">
-            <h2 class="section-title">Projects & Workshops</h2>
-            <ul class="project-list">
-                <li>
-                    <h3>Two MSc Projects</h3>
-                    <p><strong>Topic:</strong> Ramanujan–Hardy–Littlewood and Voronoi Summation formulas of arithmetic functions like the Liouville function.</p>
-                    <p><strong>Guide:</strong> Prof. Atul Abhay Dixit, IIT Gandhinagar</p>
-                </li>
-                <li>
-                    <h3>Data Analysis for "Accident and Insurance"</h3>
-                    <p><strong>Topic:</strong> Statistical analysis utilizing Python and correlation techniques.</p>
-                    <p><strong>Guide:</strong> Dr. Panchatcharam Mariappan, Associate Professor, IIT Tirupati</p>
-                </li>
-                <li>
-                    <h3>SIR Model</h3>
-                    <p><strong>Topic:</strong> Modeling infectious diseases using Ordinary Differential Equations.</p>
-                    <p><strong>Guide:</strong> Dr. Durga Prasad Challa, Associate Professor, IIT Tirupati</p>
-                </li>
-                <li>
-                    <h3>Annual Foundation School-1 (AFS-1 2024)</h3>
-                    <p><strong>Role:</strong> Participant at the rigorous mathematical workshop held at IIT Hyderabad.</p>
-                    <p><a href="https://drive.google.com/file/d/12Y5Hsfs34aQsDQ6oby5K1ONi6F9zmqEw/view" target="_blank" style="color: #0077b5; text-decoration: none; font-weight: bold;"><i class="fa-solid fa-link"></i> View Certificate</a></p>
-                </li>
-            </ul>
-        </section>
+            <h2 class="section-title">Academic Projects</h2>
+            
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Two Semester MSc Project</span>
+                </div>
+                <div class="academic-details">
+                    <strong>Topic:</strong> Ramanujan–Hardy–Littlewood and Voronoi Summation formulas of arithmetic functions like the Liouville function.<br>
+                    <strong>Advisor:</strong> Prof. Atul Abhay Dixit, IIT Gandhinagar
+                </div>
+            </div>
 
-        <section id="coursework">
-            <h2 class="section-title">MSc Coursework</h2>
-            <div class="grid-container">
-                <div class="grid-item">Real Analysis</div>
-                <div class="grid-item">Linear Algebra</div>
-                <div class="grid-item">Ordinary Differential Equations</div>
-                <div class="grid-item">Real Analysis of Several Variables</div>
-                <div class="grid-item">Algebra-I & II</div>
-                <div class="grid-item">Complex Analysis</div>
-                <div class="grid-item">Special Functions</div>
-                <div class="grid-item">Measure Theory & Probability</div>
-                <div class="grid-item">Functional Analysis</div>
-                <div class="grid-item">Hermitian Analysis</div>
-                <div class="grid-item">Topology & Differential Topology</div>
-                <div class="grid-item">Modular Forms</div>
-                <div class="grid-item">Numerical Analysis</div>
-                <div class="grid-item">Matrix Analysis</div>
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">Statistical Analysis for "Accident and Insurance"</span>
+                </div>
+                <div class="academic-details">
+                    <strong>Topic:</strong> Data analysis utilizing Python and correlation techniques.<br>
+                    <strong>Advisor:</strong> Dr. Panchatcharam Mariappan, IIT Tirupati
+                </div>
+            </div>
+
+            <div class="academic-item">
+                <div class="academic-header">
+                    <span class="academic-title">SIR Model Simulation</span>
+                </div>
+                <div class="academic-details">
+                    <strong>Topic:</strong> Modeling infectious diseases using Ordinary Differential Equations.<br>
+                    <strong>Advisor:</strong> Dr. Durga Prasad Challa, IIT Tirupati
+                </div>
             </div>
         </section>
 
+        <section id="honors">
+            <h2 class="section-title">Standardized Tests & Workshops</h2>
+            <ul class="bullet-list">
+                <li><strong>GATE Mathematics (2026):</strong> Qualified with a score of 37.03.</li>
+                <li><strong>Annual Foundation School-1 (AFS-1 2024):</strong> Participant at IIT Hyderabad. <a href="https://drive.google.com/file/d/12Y5Hsfs34aQsDQ6oby5K1ONi6F9zmqEw/view" target="_blank">[Certificate]</a></li>
+            </ul>
+        </section>
+
         <section id="skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="grid-container">
-                <div class="grid-item skill-item">LaTeX</div>
-                <div class="grid-item skill-item">Python</div>
-                <div class="grid-item skill-item">C++</div>
-                <div class="grid-item skill-item">MATLAB</div>
-                <div class="grid-item skill-item">Data Analysis</div>
-                <div class="grid-item skill-item">YouTube Content Creation</div>
+            <h2 class="section-title">Technical Skills & Selected Coursework</h2>
+            <div class="academic-item">
+                <strong>Programming & Tools:</strong> LaTeX, Python, C++, MATLAB.
+            </div>
+            <div class="academic-item">
+                <strong>Selected Coursework:</strong> Real and Complex Analysis, Linear and Matrix Algebra, Ordinary Differential Equations, Measure Theory and Probability, Functional and Hermitian Analysis, Topology, Modular Forms, Special Functions.
             </div>
         </section>
 
@@ -218,7 +259,3 @@
 
 </body>
 </html>
-
-
-
-
